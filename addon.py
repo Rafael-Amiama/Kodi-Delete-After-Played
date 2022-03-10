@@ -4,7 +4,6 @@ import xbmc
 import xbmcvfs
 import os
 import sys
-import ftplib
 import time
 from time import sleep
 
@@ -39,8 +38,7 @@ ChannelIcon = xbmc.getInfoLabel('ListItem.Icon')
 ChanShow = xbmc.getInfoLabel('ListItem.Title')
 DeviceIP = xbmc.getInfoLabel('Network.IPAddress')
 DeviceOS = os.environ.get("OS")
-#selector = dialog.contextmenu(["Online Stream", "Antenna Stream"])
-#dialog.notification(ChanName, "Starting Stream...", ChannelIcon, 10000)
+
 
 startAutomatically = xbmcvfs.exists(FolderStructure + "kodi/userdata/autoexec.py")
 
