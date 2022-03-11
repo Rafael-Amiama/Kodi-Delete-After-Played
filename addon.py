@@ -24,7 +24,11 @@ elif os.path.isdir("/home/pi/.kodi"):
 elif os.path.isdir('/storage/emulated/0/Android/data/org.xbmc.kodi/files'):
 	DeviceType = "FireTV"
 	FolderStructure = '/storage/emulated/0/Android/data/org.xbmc.kodi/files/.'
-
+elif os.path.isdir('C:\\Users\\'):
+	DeviceType = "Windows"
+	fpath = xbmcvfs.translatePath('special://home') 
+	HomePath = fpath.replace('\\','\\\\')[0:-2]
+	FolderStructure = HomePath
 
 
 
