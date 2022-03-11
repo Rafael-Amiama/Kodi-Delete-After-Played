@@ -57,12 +57,12 @@ def selected():
 		sleep(2.0)
 		beenPlayed = xbmc.getInfoLabel('ListItem.Label')
 		if ".mp4" in beenPlayed:
-			#dialog.notification("This video was played " + beenPlayed, " ","", 1000)
+			
 			whatPath = xbmc.getInfoLabel('ListItem.FolderPath')
 			if "Youtube Videos" in whatPath:
 				ExistsFile = xbmcvfs.exists(whatPath)
 				if ExistsFile == True:
-					#dialog.notification("Youtube Video is:", beenPlayed,"", 1000)
+					
 					wasPlayed = xbmc.getInfoLabel('ListItem.PlayCount')
 					if wasPlayed == "1":
 						dialog.notification("Youtube Video was Played:", "Tagging for Deletion.","", 1000)
