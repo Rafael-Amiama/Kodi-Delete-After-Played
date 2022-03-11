@@ -27,7 +27,7 @@ elif os.path.isdir('/storage/emulated/0/Android/data/org.xbmc.kodi/files'):
 elif os.path.isdir('C:\\Users\\'):
 	DeviceType = "Windows"
 	fpath = xbmcvfs.translatePath('special://home') 
-	HomePath = fpath.replace('\\','\\\\')[0:-2]
+	HomePath = fpath[0:-1]
 	FolderStructure = HomePath
 
 
@@ -43,16 +43,21 @@ ChanShow = xbmc.getInfoLabel('ListItem.Title')
 DeviceIP = xbmc.getInfoLabel('Network.IPAddress')
 DeviceOS = os.environ.get("OS")
 
+if DeviceType != "Windows":
+	startAutomatically = xbmcvfs.exists(FolderStructure + "kodi/userdata/autoexec.py")
+	if startAutomatically == False:
+		My_variable = "import xbmc\nxbmc.executebuiltin('RunScript(script.service.deleteafterplayed)')"
+		write2File = open(FolderStructure + "kodi/userdata/autoexec.py","w") # "a" means append to the end of the file. "w" over writes the entire file with new input.
+		write2File.write (My_variable), # this comma at the end prevents from creating a new line inside the text file.
+		write2File.close()
+elif DeviceType == "Windows":
+	startAutomatically = xbmcvfs.exists(FolderStructure + "\\userdata\\autoexec.py")
+	if startAutomatically == False:
+		My_variable = "import xbmc\nxbmc.executebuiltin('RunScript(script.service.deleteafterplayed)')"
+		write2File = open(FolderStructure + "\\userdata\\autoexec.py","w") # "a" means append to the end of the file. "w" over writes the entire file with new input.
+		write2File.write (My_variable), # this comma at the end prevents from creating a new line inside the text file.
+		write2File.close()
 
-startAutomatically = xbmcvfs.exists(FolderStructure + "kodi/userdata/autoexec.py")
-
-if startAutomatically == False:
-	My_variable = "import xbmc\nxbmc.executebuiltin('RunScript(script.service.deleteafterplayed)')"
-	write2File = open(FolderStructure + "kodi/userdata/autoexec.py","w") # "a" means append to the end of the file. "w" over writes the entire file with new input.
-	write2File.write (My_variable), # this comma at the end prevents from creating a new line inside the text file.
-	write2File.close()
-else:
-	pass
 
 
 
