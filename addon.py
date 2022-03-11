@@ -34,13 +34,6 @@ elif os.path.isdir('C:\\Users\\'):
 
 
 dialog = xbmcgui.Dialog()
-
-
-ChanNum = xbmc.getInfoLabel('ListItem.ChannelNumberLabel')
-ChanName = xbmc.getInfoLabel('ListItem.ChannelName')
-ChannelIcon = xbmc.getInfoLabel('ListItem.Icon')
-ChanShow = xbmc.getInfoLabel('ListItem.Title')
-DeviceIP = xbmc.getInfoLabel('Network.IPAddress')
 DeviceOS = os.environ.get("OS")
 
 if DeviceType != "Windows":
